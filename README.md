@@ -1,6 +1,6 @@
-# Arch-Optimization-Script
+# Arch Optimize 🚀
 
-A lightweight script to **optimize Arch Linux** for better performance, faster package management, and improved desktop responsiveness.  
+A lightweight script to **optimize Arch Linux** for better performance, faster package management, improved desktop responsiveness, and a faster + cleaner GRUB boot menu.  
 
 This script applies common tweaks automatically so you don’t need to configure everything manually.  
 
@@ -17,6 +17,11 @@ This script applies common tweaks automatically so you don’t need to configure
 - Limits **systemd journal logs** to 200 MB  
 - Installs the **Linux-Zen kernel** for better desktop performance  
 - Includes monitoring tools: `htop`, `iotop`, `btop`  
+- **GRUB optimizations**:
+  - Faster boot (timeout reduced to 1 second)  
+  - Cleaner boot messages (`quiet splash`)  
+  - High-resolution GRUB fonts  
+  - Optional custom background (`/boot/grub/mywallpaper.png`)  
 
 ---
 
