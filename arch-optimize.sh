@@ -47,4 +47,27 @@ systemctl restart systemd-journald
 echo "[*] Installing Linux-Zen kernel for better desktop performance..."
 pacman -S --noconfirm linux-zen linux-zen-headers
 
+echo "[*] Optimizing GRUB bootloader..."
+# Backup original config
+cp /etc/default/grub /etc/default/grub.bak
+
+# Apply tweaks
+sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/' /etc/default/grub
+sed -i 's/^GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=menu/' /etc/default/grub
+sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 nowatchdog"/' /etc/default/grub
+
+# Add background if exists
+if [ -f /boot/grub/mywallpaper.png ]; then
+    sed -i '/^GRUB_BACKGROUND/d' /etc/default/grub
+    echo 'GRUB_BACKGROUND="/boot/grub/mywallpaper.png"' >> /etc/default/grub
+fi
+
+# Generate high-res font
+mkdir -p /boot/grub/fonts
+grub-mkfont -o /boot/grub/fonts/DejaVuSansMono32.pf2 /usr/share/fonts/TTF/DejaVuSansMono.ttf || true
+echo 'GRUB_FONT="/boot/grub/fonts/DejaVuSansMono32.pf2"' >> /etc/default/grub
+
+# Regenerate grub config
+grub-mkconfig -o /boot/grub/grub.cfg
+
 echo "[*] Done! Reboot recommended."
