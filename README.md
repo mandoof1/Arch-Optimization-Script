@@ -29,7 +29,7 @@ This script applies common tweaks automatically so you don’t need to configure
 Clone the repo and run the script:
 
 ```bash
-git clone https://github.com/<your-username>/arch-optimize.git
-cd arch-optimize
+git clone https://github.com/mandoof1/Arch-Optimization-Script.git
+cd Arch-Optimization-Script
 chmod +x arch-optimize.sh
 sudo ./arch-optimize.sh
